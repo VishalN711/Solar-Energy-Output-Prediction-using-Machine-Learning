@@ -1,25 +1,4 @@
 #!/usr/bin/env python3
-"""
-================================================================================
-SOLAR ENERGY PREDICTION - MACHINE LEARNING TRAINING & EVALUATION
-================================================================================
-Complete ML Pipeline: Data Loading, Splitting, Training, Prediction, Evaluation
-
-Features:
-- Loads preprocessed solar energy dataset (Part 1 & 2)
-- Splits data into training (80%) and testing (20%)
-- Trains 5 different ML models
-- Makes predictions on test set
-- Compares predictions with actual values
-- Calculates accuracy metrics (R², RMSE, MAE, MAPE)
-- Saves results to CSV files
-- Generates performance visualizations
-
-Author: AI Research Assistant
-Date: November 2025
-================================================================================
-"""
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
