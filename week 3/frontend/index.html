@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Solar Energy Prediction</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1> Solar Energy Prediction Dashboard</h1>
+            <p>Machine Learning Powered Forecasting</p>
+        </header>
+
+        <nav class="nav">
+            <button class="nav-btn active" data-page="home"> Home</button>
+            <button class="nav-btn" data-page="data"> Data</button>
+            <button class="nav-btn" data-page="predict"> Predict</button>
+            <button class="nav-btn" data-page="info">ℹ Info</button>
+        </nav>
+
+        <main class="main">
+            <section id="home" class="page active">
+                <div class="hero">
+                    <h2>Solar Energy Prediction System</h2>
+                    <p>Advanced ML model with feature engineering for accurate forecasting</p>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3> Dataset</h3>
+                        <p class="metric-value">300</p>
+                        <p class="metric-label">Records</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3> Model</h3>
+                        <p class="metric-value">94%</p>
+                        <p class="metric-label">Accuracy</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3> Features</h3>
+                        <p class="metric-value">20</p>
+                        <p class="metric-label">Engineered</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3> Tech</h3>
+                        <p class="metric-value">ML</p>
+                        <p class="metric-label">Random Forest</p>
+                    </div>
+                </div>
+
+                <div class="feature-eng">
+                    <h3> Feature Engineering</h3>
+                    <ul>
+                        <li>✓ Hour extraction (0-23)</li>
+                        <li>✓ Weekday extraction (Mon-Sun)</li>
+                        <li>✓ Rolling averages (3h, 7h)</li>
+                        <li>✓ Cyclical encoding (sin/cos)</li>
+                        <li>✓ Daylight indicators</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="data" class="page">
+                <h2> Data Explorer</h2>
+                <div class="chart-container">
+                    <h3>Solar Energy Output (Time Series)</h3>
+                    <canvas id="energyChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Solar Irradiance vs Energy</h3>
+                    <canvas id="irradianceChart"></canvas>
+                </div>
+                <div class="data-table">
+                    <h3>Dataset Sample</h3>
+                    <table id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Hour</th>
+                                <th>Temperature</th>
+                                <th>Irradiance</th>
+                                <th>Cloud%</th>
+                                <th>Energy Output</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="predict" class="page">
+                <h2> Make Prediction</h2>
+                <div class="prediction-form">
+                    <h3>Enter Weather Data</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Hour (0-23)</label>
+                            <input type="range" id="hour" min="0" max="23" value="12">
+                            <span id="hourDisplay">12</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Temperature (°C)</label>
+                            <input type="range" id="temperature" min="-10" max="50" value="25">
+                            <span id="tempDisplay">25</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Humidity (%)</label>
+                            <input type="range" id="humidity" min="0" max="100" value="50">
+                            <span id="humidityDisplay">50</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Solar Irradiance</label>
+                            <input type="range" id="solar_irradiance" min="0" max="1000" value="500">
+                            <span id="irradianceDisplay">500</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Cloud Cover (%)</label>
+                            <input type="range" id="cloud_cover" min="0" max="100" value="30">
+                            <span id="cloudDisplay">30</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Wind Speed (m/s)</label>
+                            <input type="range" id="wind_speed" min="0" max="20" value="5">
+                            <span id="windDisplay">5</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Pressure (hPa)</label>
+                            <input type="range" id="pressure" min="950" max="1050" value="1013">
+                            <span id="pressureDisplay">1013</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Weekday</label>
+                            <select id="weekday">
+                                <option value="0">Monday</option>
+                                <option value="1">Tuesday</option>
+                                <option value="2">Wednesday</option>
+                                <option value="3">Thursday</option>
+                                <option value="4">Friday</option>
+                                <option value="5">Saturday</option>
+                                <option value="6" selected>Sunday</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="predict-btn" onclick="makePrediction()">🔮 Predict</button>
+                </div>
+
+                <div id="predictionResult" class="prediction-result" style="display: none;">
+                    <h3>⚡ Prediction Result</h3>
+                    <div class="result-box">
+                        <p class="result-label">Solar Energy Output</p>
+                        <p class="result-value" id="predictionValue">-</p>
+                        <p class="result-unit">kWh</p>
+                        <p class="confidence">Confidence: <span id="confidenceValue">-</span>%</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="info" class="page">
+                <h2>ℹ About</h2>
+                <div class="info-box">
+                    <h3> Model: Random Forest</h3>
+                    <p>Accuracy: 94% | Records: 240 Training, 60 Testing</p>
+                </div>
+                <div class="info-box">
+                    <h3> Dataset</h3>
+                    <p>300 hourly records | 20 engineered features | Jan 2023 data</p>
+                </div>
+                <div class="info-box">
+                    <h3> Feature Engineering</h3>
+                    <p>Hour/Weekday extraction • Rolling Averages (3h, 7h) • Cyclical Encoding • Daylight Indicators</p>
+                </div>
+                <div class="info-box">
+                    <h3> Stack</h3>
+                    <p>Node.js + Express (Backend) | HTML/CSS/JS (Frontend) | Random Forest (ML)</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p> Solar Energy Prediction | ML-Powered Dashboard</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
