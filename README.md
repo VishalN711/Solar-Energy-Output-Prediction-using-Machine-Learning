@@ -1,1 +1,0 @@
-# Solar-Energy-Output-Prediction-using-Machine-Learning
