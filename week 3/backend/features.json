@@ -1,0 +1,1 @@
+["hour", "weekday", "temperature", "humidity", "pressure", "wind_speed", "wind_direction", "visibility", "cloud_cover", "dew_point", "solar_irradiance", "precipitation", "air_quality_index", "solar_irradiance_rolling_3h", "solar_irradiance_rolling_7h", "temp_rolling_3h", "cloud_rolling_3h", "hour_sin", "hour_cos", "is_daylight"]
