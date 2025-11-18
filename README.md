@@ -1,29 +1,8 @@
-# ☀️ Solar Energy Prediction Web Application
+#  Solar Energy Prediction Web Application
 
 Full-stack web app with Node.js/Express backend + HTML/CSS/JS frontend for solar energy prediction using Random Forest ML model.
 
-## 🚀 Quick Start
-
-### 1. Extract ZIP
-```bash
-unzip solar_energy_app.zip
-cd solar_energy_app
-```
-
-### 2. Install Dependencies
-```bash
-npm install
-```
-
-### 3. Start Server
-```bash
-npm start
-```
-
-### 4. Open Dashboard
-Go to: **http://localhost:5500**
-
-## 📁 Structure
+##  Structure
 ```
 solar_energy_app/
 ├── backend/
@@ -40,36 +19,24 @@ solar_energy_app/
 └── README.md
 ```
 
-## 🎯 Features
+##  Features
 
-✅ **Random Forest ML Model** - 94% accuracy
-✅ **Feature Engineering** - Hour, weekday, rolling averages, cyclical encoding
-✅ **Interactive Dashboard** - 5 pages with charts
-✅ **Real-time Predictions** - Input weather, get solar energy forecast
-✅ **Data Visualization** - Chart.js for interactive plots
-✅ **Full-Stack** - Node.js + Express backend, HTML/CSS/JS frontend
+ **Random Forest ML Model** - 94% accuracy
+ **Feature Engineering** - Hour, weekday, rolling averages, cyclical encoding
+ **Interactive Dashboard** - 5 pages with charts
+ **Real-time Predictions** - Input weather, get solar energy forecast
+ **Data Visualization** - Chart.js for interactive plots
+ **Full-Stack** - Node.js + Express backend, HTML/CSS/JS frontend
 
-## 📊 Pages
+##  Pages
 
-- **🏠 Home**: Overview & metrics
-- **📊 Data**: Dataset explorer with charts
-- **🔮 Predict**: Make custom predictions
-- **ℹ️ Info**: Model & project details
+- ** Home**: Overview & metrics
+- ** Data**: Dataset explorer with charts
+- ** Predict**: Make custom predictions
+- ** Info**: Model & project details
 
-## 🛠️ Troubleshooting
 
-**Port 5500 in use:**
-```bash
-npm start --port 5500
-```
-
-**Dependencies issue:**
-```bash
-rm -rf node_modules package-lock.json
-npm install
-```
-
-## 📈 Model Details
+##  Model Details
 
 - Algorithm: Random Forest Regressor
 - Accuracy: 94%
@@ -77,7 +44,7 @@ npm install
 - Test records: 60
 - Features: 20 (with engineering)
 
-## ✨ Feature Engineering
+##  Feature Engineering
 
 - Hour extraction (0-23)
 - Weekday extraction (0-6)
@@ -85,5 +52,5 @@ npm install
 - Cyclical encoding (sin/cos)
 - Daylight indicators
 
-Enjoy! ☀️
+Enjoy! 
 
